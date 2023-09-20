@@ -1,5 +1,7 @@
 # IGNITE (the fox)
 
+**Note** : this is a fork that adds a small snippet so you can select a specific Firefox profile for a specific workspace (look at the top of the ignite script to see how to modify it for your own needs)
+
 *Ignite (the fox)* is a script for gnome-shell that will open a new Firefox window if there is no Firefox window on the current workspace.
 If there is a Firefox window on the current desktop, it will be activated and clicked links will open new tabs in this instance.
 I use workspaces a lot.

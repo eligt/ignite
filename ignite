@@ -4,6 +4,13 @@
 # The format of the desktop list:
 # <desktop ID> [-*] <geometry> <viewport> <workarea> <title>
 WORKSPACE=`wmctrl -d | grep -Po "^[0-9]+(?=[[:space:]]+\* )"`
+PROFILE=
+
+# associate workspace numbers (0-indexed) to specific Firefox profiles
+if [ $WORKSPACE -eq 2 ]
+then
+	PROFILE="-p Work"
+fi
 
 # List windows managed by the window manager.
 # The format of the window list:
@@ -12,8 +19,8 @@ FIREFOX_WINDOW=`wmctrl -l | grep -Po "^0x[0-9a-f]+(?=[[:space:]]+ $WORKSPACE .* 
 if [ $? -eq 0 ]
 then
   wmctrl -i -a "$FIREFOX_WINDOW"
-  firefox --new-tab "$@"
+  firefox $PROFILE --new-tab "$@"
 else
   echo "no fox to ignite"
-  firefox --new-window "$@"
+  firefox $PROFILE --new-window "$@"
 fi
